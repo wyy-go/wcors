@@ -12,7 +12,7 @@ jobs:
   golangci:
     strategy:
       matrix:
-        go-version: ["1.15.x", "1.16.x","1.17.x"]
+        go-version: ["1.16.x","1.17.x"]
         os: [windows-latest, macos-latest, ubuntu-latest]
     name: golangci-lint
     runs-on: ${{ matrix.os }}
@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v2
-        #https://golangci-lint.run/usage/linters/
+        # https://golangci-lint.run/usage/linters/
         with:
           version: v1.43.0
-          args: --verbose --disable-all -E errcheck -E goimports -E gocritic -E misspell -E revive
+          args: --verbose --disable-all -E misspell #-E errcheck -E revive -E gocritic -E goimports 
